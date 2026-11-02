@@ -1,39 +1,1361 @@
-<!doctype html>
+!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Portafolio de Proyectos</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#0a0a0a;--surface:#111;--text:#f5f5f5;--muted:#9aa0a6;--accent:#3b82f6;--accent-2:#8b5cf6;--border:#262626}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--text);font:16px/1.6 'Public Sans',system-ui,sans-serif}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
-header{padding:80px 0 40px;text-align:center;border-bottom:1px solid var(--border)}h1{font:700 48px/1.1 'Big Shoulders Display',sans-serif;letter-spacing:1px;margin-bottom:12px}
-.subtitle{color:var(--muted);font-size:18px}
-.projects{padding:60px 0}h2{font:700 32px/1.2 'Big Shoulders Display',sans-serif;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s}
-.card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.card-img{height:180px;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
-.card-body{padding:20px}
-.card-title{font:700 20px/1.3 'Public Sans',sans-serif;margin-bottom:8px}
-.card-desc{color:var(--muted);font-size:14px;margin-bottom:16px}
-.card-link{color:var(--accent);text-decoration:none;font-weight:600;font-size:14px}
-.card-link:hover{text-decoration:underline}
-footer{padding:40px 0;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--border)}
-@media(max-width:600px){h1{font-size:36px}.subtitle{font-size:16px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impulso Digital Portfolio</title>
+  <meta name="description" content="Portafolio web ultra moderno, minimalista e interactivo de Impulso Digital SV." />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+      --text-hero: clamp(3rem, 0.5rem + 7vw, 8rem);
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #fbfbf9;
+      --color-surface-offset: #f1eeea;
+      --color-surface-offset-2: #e8e3dd;
+      --color-surface-dynamic: #ded8d1;
+      --color-divider: #d8d3cc;
+      --color-border: rgba(40, 37, 29, 0.1);
+      --color-text: #201d18;
+      --color-text-muted: #6f6a62;
+      --color-text-faint: #9d978f;
+      --color-text-inverse: #f9f8f4;
+      --color-primary: #0b6b63;
+      --color-primary-hover: #08514b;
+      --color-primary-active: #063a36;
+      --color-primary-highlight: #d4e2df;
+      --color-blue: #1251b5;
+      --color-blue-highlight: #d6dff2;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1.25rem;
+      --radius-xl: 1.75rem;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(32,29,24,.04), 0 8px 24px rgba(32,29,24,.04);
+      --shadow-md: 0 8px 20px rgba(32,29,24,.08), 0 20px 48px rgba(32,29,24,.08);
+      --shadow-lg: 0 16px 40px rgba(32,29,24,.12), 0 28px 80px rgba(32,29,24,.12);
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --content-narrow: 720px;
+      --content-default: 1120px;
+      --content-wide: 1280px;
+      --font-body: 'Satoshi', Inter, sans-serif;
+      --font-display: 'Cabinet Grotesk', 'Satoshi', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #111110;
+      --color-surface: #171715;
+      --color-surface-2: #1d1d1a;
+      --color-surface-offset: #23231f;
+      --color-surface-offset-2: #2b2b26;
+      --color-surface-dynamic: #36352f;
+      --color-divider: #2c2b27;
+      --color-border: rgba(245, 241, 235, 0.1);
+      --color-text: #f2efe9;
+      --color-text-muted: #b0aba2;
+      --color-text-faint: #77736c;
+      --color-text-inverse: #151412;
+      --color-primary: #72bdb4;
+      --color-primary-hover: #4ca398;
+      --color-primary-active: #38857c;
+      --color-primary-highlight: rgba(114, 189, 180, 0.12);
+      --color-blue: #7aa5ff;
+      --color-blue-highlight: rgba(122, 165, 255, 0.12);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.18), 0 8px 24px rgba(0,0,0,.22);
+      --shadow-md: 0 12px 28px rgba(0,0,0,.28), 0 24px 60px rgba(0,0,0,.3);
+      --shadow-lg: 0 18px 40px rgba(0,0,0,.4), 0 40px 90px rgba(0,0,0,.35);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --color-bg: #111110;
+        --color-surface: #171715;
+        --color-surface-2: #1d1d1a;
+        --color-surface-offset: #23231f;
+        --color-surface-offset-2: #2b2b26;
+        --color-surface-dynamic: #36352f;
+        --color-divider: #2c2b27;
+        --color-border: rgba(245, 241, 235, 0.1);
+        --color-text: #f2efe9;
+        --color-text-muted: #b0aba2;
+        --color-text-faint: #77736c;
+        --color-text-inverse: #151412;
+        --color-primary: #72bdb4;
+        --color-primary-hover: #4ca398;
+        --color-primary-active: #38857c;
+        --color-primary-highlight: rgba(114, 189, 180, 0.12);
+        --color-blue: #7aa5ff;
+        --color-blue-highlight: rgba(122, 165, 255, 0.12);
+        --shadow-sm: 0 1px 2px rgba(0,0,0,.18), 0 8px 24px rgba(0,0,0,.22);
+        --shadow-md: 0 12px 28px rgba(0,0,0,.28), 0 24px 60px rgba(0,0,0,.3);
+        --shadow-lg: 0 18px 40px rgba(0,0,0,.4), 0 40px 90px rgba(0,0,0,.35);
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      -moz-text-size-adjust: none;
+      -webkit-text-size-adjust: none;
+      text-size-adjust: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+    body {
+      min-height: 100dvh;
+      line-height: 1.6;
+      font-family: var(--font-body, sans-serif);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top left, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 36%),
+        radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--color-blue) 8%, transparent), transparent 28%),
+        var(--color-bg);
+      overflow-x: hidden;
+    }
+    img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+    input, button, textarea, select { font: inherit; color: inherit; }
+    h1, h2, h3, h4, h5, h6 { text-wrap: balance; line-height: 1.05; }
+    p, li { text-wrap: pretty; max-width: 68ch; }
+    ::selection { background: color-mix(in srgb, var(--color-primary) 20%, transparent); color: var(--color-text); }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    a, button, [role="button"] {
+      transition: color var(--transition-interactive), background var(--transition-interactive), border-color var(--transition-interactive), box-shadow var(--transition-interactive), transform var(--transition-interactive), opacity var(--transition-interactive);
+    }
+    button { cursor: pointer; background: none; border: none; }
+    a { color: inherit; text-decoration: none; }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: var(--space-3);
+      left: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-text);
+      color: var(--color-text-inverse);
+      border-radius: var(--radius-full);
+      transform: translateY(-120%);
+      z-index: 1000;
+    }
+    .skip-link:focus-visible { transform: translateY(0); }
+
+    .container {
+      width: min(100% - 2rem, var(--content-default));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      min-height: 5rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-height: 44px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 24%, var(--color-surface)), var(--color-surface-2));
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      color: var(--color-primary);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      letter-spacing: 0.02em;
+    }
+    .brand-copy span {
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav {
+      display: none;
+      align-items: center;
+      gap: var(--space-5);
+    }
+    .nav a {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      position: relative;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0.5rem;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-interactive);
+    }
+    .nav a:hover { color: var(--color-text); }
+    .nav a:hover::after,
+    .nav a:focus-visible::after { transform: scaleX(1); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .theme-toggle,
+    .menu-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+      display: inline-grid;
+      place-items: center;
+      color: var(--color-text);
+    }
+    .theme-toggle:hover,
+    .menu-toggle:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+    .theme-toggle:active,
+    .menu-toggle:active { transform: translateY(0); }
+
+    .mobile-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 260ms cubic-bezier(0.16, 1, 0.3, 1);
+      border-top: 1px solid transparent;
+    }
+    .mobile-panel.open {
+      grid-template-rows: 1fr;
+      border-top-color: var(--color-border);
+    }
+    .mobile-panel-inner {
+      overflow: hidden;
+    }
+    .mobile-links {
+      display: flex;
+      flex-direction: column;
+      padding: 0 0 var(--space-4);
+      gap: var(--space-1);
+    }
+    .mobile-links a {
+      padding: var(--space-3) 0;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--color-text-muted);
+    }
+
+    .hero {
+      padding-block: clamp(var(--space-12), 10vw, var(--space-24));
+      position: relative;
+    }
+    .hero-grid {
+      display: grid;
+      gap: var(--space-10);
+      align-items: end;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.45rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+      color: var(--color-primary);
+      border: 1px solid color-mix(in srgb, var(--color-primary) 16%, var(--color-border));
+      font-size: var(--text-xs);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: var(--space-5);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+    }
+    .hero .lead {
+      margin-top: var(--space-5);
+      color: var(--color-text-muted);
+      font-size: var(--text-lg);
+      max-width: 34ch;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+    }
+    .button {
+      min-height: 48px;
+      padding: 0.9rem 1.2rem;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      border: 1px solid var(--color-border);
+    }
+    .button.primary {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      border-color: transparent;
+      box-shadow: var(--shadow-sm);
+    }
+    .button.primary:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
+    .button.secondary {
+      background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+      color: var(--color-text);
+    }
+    .button.secondary:hover { background: var(--color-surface-offset); }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-3);
+      margin-top: var(--space-10);
+    }
+    .metric {
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+      border: 1px solid var(--color-border);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+    }
+    .metric strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      letter-spacing: -0.04em;
+    }
+    .metric span {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .hero-panel {
+      position: relative;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 92%, transparent), color-mix(in srgb, var(--color-surface-offset) 92%, transparent));
+      border: 1px solid var(--color-border);
+      border-radius: calc(var(--radius-xl) + 0.5rem);
+      padding: var(--space-5);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      min-height: 520px;
+    }
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -30% 40%;
+      aspect-ratio: 1;
+      background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 65%);
+      filter: blur(20px);
+      pointer-events: none;
+    }
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
+    }
+    .browser-dots {
+      display: inline-flex;
+      gap: 0.35rem;
+    }
+    .browser-dots span {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      background: var(--color-surface-dynamic);
+    }
+    .browser-pill {
+      flex: 1;
+      padding: 0.6rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+    .hero-stack {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .stack-card {
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--color-surface-2) 88%, transparent);
+      border: 1px solid var(--color-border);
+      padding: var(--space-4);
+      box-shadow: var(--shadow-sm);
+    }
+    .stack-card.primary {
+      display: grid;
+      gap: var(--space-4);
+      min-height: 220px;
+      background: linear-gradient(160deg, color-mix(in srgb, var(--color-primary) 12%, var(--color-surface-2)), var(--color-surface));
+    }
+    .stack-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--space-2);
+      align-items: end;
+      min-height: 140px;
+    }
+    .signal-grid span {
+      border-radius: var(--radius-full);
+      background: linear-gradient(180deg, var(--color-primary), color-mix(in srgb, var(--color-blue) 70%, var(--color-primary)));
+      animation: pulse 3s ease-in-out infinite;
+      opacity: 0.9;
+    }
+    .signal-grid span:nth-child(1) { height: 42%; animation-delay: 0s; }
+    .signal-grid span:nth-child(2) { height: 78%; animation-delay: .1s; }
+    .signal-grid span:nth-child(3) { height: 60%; animation-delay: .2s; }
+    .signal-grid span:nth-child(4) { height: 88%; animation-delay: .3s; }
+    .signal-grid span:nth-child(5) { height: 70%; animation-delay: .4s; }
+    .signal-grid span:nth-child(6) { height: 100%; animation-delay: .5s; }
+
+    .stack-bottom {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-4);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .chip {
+      padding: 0.45rem 0.7rem;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-highlight);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    section {
+      padding-block: clamp(var(--space-10), 8vw, var(--space-20));
+    }
+
+    .section-head {
+      display: grid;
+      gap: var(--space-3);
+      margin-bottom: var(--space-8);
+    }
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+    .section-head p {
+      color: var(--color-text-muted);
+      max-width: 54ch;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--space-3);
+    }
+    .trust-card {
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+      border: 1px solid var(--color-border);
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .trust-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-primary) 28%, transparent), transparent);
+      opacity: 0;
+      transition: opacity var(--transition-interactive);
+    }
+    .trust-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .trust-card:hover::after { opacity: 1; }
+    .trust-index {
+      color: var(--color-text-faint);
+      font-size: var(--text-xs);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .trust-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      letter-spacing: -0.03em;
+      margin-top: auto;
+    }
+    .trust-card a {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      word-break: break-word;
+    }
+
+    .projects-grid {
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+    .project-card {
+      grid-column: span 12;
+      background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: calc(var(--radius-xl) + 0.25rem);
+      padding: var(--space-5);
+      display: grid;
+      gap: var(--space-5);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 16%, transparent), transparent 35%);
+      pointer-events: none;
+      opacity: 0.9;
+    }
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+    .project-title {
+      display: grid;
+      gap: var(--space-2);
+    }
+    .project-kicker {
+      color: var(--accent);
+      font-size: var(--text-xs);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .project-title h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 1.2rem + 1.5vw, 2.8rem);
+      letter-spacing: -0.04em;
+      line-height: 0.98;
+    }
+    .project-title p {
+      color: var(--color-text-muted);
+      max-width: 42ch;
+    }
+    .project-link {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-full);
+      border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--color-border));
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      background: color-mix(in srgb, var(--accent) 6%, var(--color-surface));
+    }
+    .project-link:hover {
+      transform: translateY(-1px);
+      background: color-mix(in srgb, var(--accent) 10%, var(--color-surface));
+    }
+    .project-preview {
+      position: relative;
+      z-index: 1;
+      border-radius: calc(var(--radius-lg) + 0.25rem);
+      overflow: hidden;
+      border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--color-border));
+      background: color-mix(in srgb, var(--color-surface-2) 92%, transparent);
+      min-height: 260px;
+      padding: var(--space-4);
+      display: grid;
+      gap: var(--space-4);
+      align-content: start;
+    }
+    .preview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .preview-frame {
+      border-radius: calc(var(--radius-lg) - 0.25rem);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 7%, var(--color-surface-2)), var(--color-surface));
+      border: 1px solid color-mix(in srgb, var(--accent) 10%, var(--color-border));
+      padding: var(--space-4);
+      display: grid;
+      gap: var(--space-3);
+      min-height: 180px;
+    }
+    .preview-ui {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: var(--space-3);
+      flex: 1;
+    }
+    .preview-block,
+    .preview-small,
+    .preview-stat,
+    .preview-line,
+    .preview-pill {
+      border-radius: var(--radius-md);
+      background: color-mix(in srgb, var(--color-text) 4%, var(--color-surface-2));
+      border: 1px solid color-mix(in srgb, var(--color-text) 6%, transparent);
+    }
+    .preview-block {
+      min-height: 116px;
+      padding: var(--space-4);
+      display: grid;
+      gap: var(--space-3);
+    }
+    .preview-small {
+      min-height: 116px;
+      padding: var(--space-4);
+      display: grid;
+      place-items: center;
+    }
+    .preview-barset {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-2);
+      align-items: end;
+      height: 100%;
+      width: 100%;
+    }
+    .preview-barset span {
+      border-radius: var(--radius-full);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 90%, white 0%), color-mix(in srgb, var(--accent) 45%, white 12%));
+      opacity: .95;
+    }
+    .preview-barset span:nth-child(1){height:35%}
+    .preview-barset span:nth-child(2){height:80%}
+    .preview-barset span:nth-child(3){height:55%}
+    .preview-barset span:nth-child(4){height:95%}
+    .preview-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+    }
+    .preview-stat {
+      min-height: 64px;
+      padding: var(--space-3);
+      display: grid;
+      align-content: space-between;
+    }
+    .preview-line {
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 68%, transparent), color-mix(in srgb, var(--color-text) 6%, var(--color-surface-2)) 75%);
+    }
+    .preview-line.short { width: 58%; }
+    .preview-line.medium { width: 72%; }
+    .preview-line.long { width: 90%; }
+    .preview-pill {
+      height: 32px;
+      width: fit-content;
+      min-width: 96px;
+      padding-inline: var(--space-3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: color-mix(in srgb, var(--accent) 10%, var(--color-surface));
+    }
+    .project-meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .meta-chip {
+      padding: 0.55rem 0.8rem;
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      background: color-mix(in srgb, var(--color-surface-2) 90%, transparent);
+      border: 1px solid var(--color-border);
+    }
+
+    .difference {
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .difference-card {
+      padding: var(--space-5);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      gap: var(--space-3);
+    }
+    .difference-card i {
+      color: var(--color-primary);
+    }
+    .difference-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      letter-spacing: -0.03em;
+    }
+    .difference-card p { color: var(--color-text-muted); }
+
+    .cta {
+      padding-bottom: var(--space-24);
+    }
+    .cta-panel {
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-primary) 10%, var(--color-surface)), color-mix(in srgb, var(--color-blue) 8%, var(--color-surface-offset)));
+      border: 1px solid var(--color-border);
+      border-radius: calc(var(--radius-xl) + 0.5rem);
+      padding: clamp(var(--space-6), 5vw, var(--space-12));
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      gap: var(--space-6);
+      align-items: center;
+    }
+    .cta-panel h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+    .cta-panel p { color: var(--color-text-muted); max-width: 46ch; }
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .footer {
+      border-top: 1px solid var(--color-border);
+      padding-block: var(--space-6);
+      color: var(--color-text-muted);
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .fade-in { opacity: 1; }
+    @supports (animation-timeline: view()) {
+      .fade-in {
+        opacity: 0;
+        animation: reveal-fade linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 55%;
+      }
+      .reveal-up {
+        clip-path: inset(100% 0 0 0);
+        animation: reveal-clip linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 70%;
+      }
+    }
+
+    @keyframes reveal-fade { to { opacity: 1; } }
+    @keyframes reveal-clip { to { clip-path: inset(0 0 0 0); } }
+    @keyframes pulse {
+      0%, 100% { transform: scaleY(1); opacity: .82; }
+      50% { transform: scaleY(1.04); opacity: 1; }
+    }
+
+    .splitting .char {
+      opacity: 0;
+      animation: char-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: calc(var(--char-index) * 28ms);
+    }
+    @keyframes char-reveal { to { opacity: 1; } }
+
+    @media (min-width: 820px) {
+      .nav { display: inline-flex; }
+      .menu-toggle, .mobile-panel { display: none; }
+      .hero-grid { grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr); }
+      .project-card:nth-child(1) { grid-column: span 7; }
+      .project-card:nth-child(2) { grid-column: span 5; }
+      .project-card:nth-child(3) { grid-column: span 5; }
+      .project-card:nth-child(4) { grid-column: span 7; }
+      .project-card:nth-child(5) { grid-column: span 12; }
+      .cta-panel { grid-template-columns: 1.2fr 0.8fr; }
+    }
+
+    @media (max-width: 980px) {
+      .trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .difference { grid-template-columns: 1fr; }
+      .stack-bottom,
+      .preview-ui { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 1.2rem, var(--content-default)); }
+      .hero h1 { max-width: 11ch; }
+      .hero-metrics { grid-template-columns: 1fr; }
+      .trust-row { grid-template-columns: 1fr; }
+      .project-top { flex-direction: column; }
+      .project-link { width: fit-content; }
+      .preview-stat-row { grid-template-columns: 1fr; }
+      .cta-panel h2 { font-size: var(--text-2xl); }
+      .footer-row { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (hover: none) {
+      .button:hover,
+      .project-link:hover,
+      .trust-card:hover,
+      .theme-toggle:hover,
+      .menu-toggle:hover { transform: none; box-shadow: inherit; }
+    }
+  </style>
 </head>
 <body>
-<header><div class="container"><h1>Portafolio de Proyectos</h1><p class="subtitle">Desarrollo web, marketing digital y automatizaciones</p></div></header>
-<main class="projects"><div class="container"><h2>Proyectos destacados</h2><div class="grid">
-<article class="card"><div class="card-img"></div><div class="card-body"><h3 class="card-title">Sitio web corporativo</h3><p class="card-desc">Landing page optimizada para conversión con integración de CRM y automatización de leads.</p><a class="card-link" href="#">Ver proyecto →</a></div></article>
-<article class="card"><div class="card-img"></div><div class="card-body"><h3 class="card-title">Dashboard de operaciones</h3><p class="card-desc">Panel interno para seguimiento de crews, materiales y actualizaciones de proyectos en tiempo real.</p><a class="card-link" href="#">Ver proyecto →</a></div></article>
-<article class="card"><div class="card-img"></div><div class="card-body"><h3 class="card-title">Automatización con IA</h3><p class="card-desc">Flujos de captación de leads con recepcionista virtual y scoring automático.</p><a class="card-link" href="#">Ver proyecto →</a></div></article>
-</div></div></main>
-<footer><div class="container"><p>© 2026 IMPULSO DIGITAL SV. Todos los derechos reservados.</p></div></footer>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio de Impulso Digital">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Impulso Digital logo">
+            <path d="M5 16.5L10.2 11.3L13.4 14.5L19 8.8" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15.4 8.8H19V12.4" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <strong>Impulso Digital SV</strong>
+          <span>Portfolio web</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#marcas">Marcas</a>
+        <a href="#enfoque">Enfoque</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambiar tema"></button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menú">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-panel" id="mobile-nav">
+      <div class="container mobile-panel-inner">
+        <nav class="mobile-links" aria-label="Navegación móvil">
+          <a href="#proyectos">Proyectos</a>
+          <a href="#marcas">Marcas</a>
+          <a href="#enfoque">Enfoque</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="fade-in">
+          <span class="eyebrow"><i data-lucide="sparkles"></i> Diseño, performance y conversión</span>
+          <h1 data-splitting>Webs que convierten confianza en crecimiento.</h1>
+          <p class="lead">Un portafolio editorial y tecnológico para mostrar el nivel visual, estratégico y técnico con el que Impulso Digital diseña experiencias web de alto impacto.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#proyectos">Explorar proyectos <i data-lucide="arrow-up-right"></i></a>
+            <a class="button secondary" href="#contacto">Solicitar propuesta</a>
+          </div>
+          <div class="hero-metrics" aria-label="Indicadores de experiencia">
+            <article class="metric">
+              <strong>05</strong>
+              <span>Marcas activas en este showcase</span>
+            </article>
+            <article class="metric">
+              <strong>UX + SEO</strong>
+              <span>Diseño limpio orientado a captación</span>
+            </article>
+            <article class="metric">
+              <strong>24/7</strong>
+              <span>Experiencias pensadas para vender siempre</span>
+            </article>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal-up" aria-hidden="true">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-pill">Interactive showcase / Impulso Digital</div>
+          </div>
+          <div class="hero-stack">
+            <article class="stack-card primary">
+              <div class="stack-row">
+                <span>Lead engine</span>
+                <span>Realtime intent</span>
+              </div>
+              <div class="signal-grid">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="chip-row">
+                <span class="chip">Landing systems</span>
+                <span class="chip">Local SEO</span>
+                <span class="chip">Automation</span>
+              </div>
+            </article>
+            <div class="stack-bottom">
+              <article class="stack-card">
+                <div class="stack-row">
+                  <span>Stack visual</span>
+                  <span>Minimal depth</span>
+                </div>
+                <div class="preview-line long"></div>
+                <div class="preview-line medium"></div>
+                <div class="preview-line short"></div>
+              </article>
+              <article class="stack-card">
+                <div class="stack-row">
+                  <span>Clients</span>
+                  <span>Trusted brands</span>
+                </div>
+                <div class="chip-row">
+                  <span class="chip">JW</span>
+                  <span class="chip">Siding</span>
+                  <span class="chip">Gutter</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="marcas">
+      <div class="container">
+        <div class="section-head fade-in">
+          <h2>Estas marcas ya confían en nosotros.</h2>
+          <p>La credibilidad de Impulso Digital se construye con resultados, consistencia visual y plataformas listas para captar clientes desde el primer scroll.</p>
+        </div>
+        <div class="trust-row reveal-up">
+          <article class="trust-card">
+            <span class="trust-index">01</span>
+            <h3>Control de Plagas JW</h3>
+            <a href="https://controldeplagasjw.com" target="_blank" rel="noopener noreferrer">controldeplagasjw.com</a>
+          </article>
+          <article class="trust-card">
+            <span class="trust-index">02</span>
+            <h3>Siding Solution</h3>
+            <a href="https://sidingsolution.com" target="_blank" rel="noopener noreferrer">sidingsolution.com</a>
+          </article>
+          <article class="trust-card">
+            <span class="trust-index">03</span>
+            <h3>Gutter Solution</h3>
+            <a href="https://guttersolution.us" target="_blank" rel="noopener noreferrer">guttersolution.us</a>
+          </article>
+          <article class="trust-card">
+            <span class="trust-index">04</span>
+            <h3>Gutter Leaf Solutions</h3>
+            <a href="https://gutterleafsolutions.com" target="_blank" rel="noopener noreferrer">gutterleafsolutions.com</a>
+          </article>
+          <article class="trust-card">
+            <span class="trust-index">05</span>
+            <h3>Excelnova</h3>
+            <a href="https://excelnova.com" target="_blank" rel="noopener noreferrer">excelnova.com</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="container">
+        <div class="section-head fade-in">
+          <h2>Un showcase diseñado para vender capacidad.</h2>
+          <p>Cada tarjeta funciona como una vista conceptual de marca: un sistema visual limpio, una jerarquía de contenido clara y una lectura rápida orientada a confianza, autoridad y conversión.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal-up" style="--accent:#1b7f74;">
+            <div class="project-top">
+              <div class="project-title">
+                <span class="project-kicker">Pest Control</span>
+                <h3>Control de Plagas JW</h3>
+                <p>Presencia digital enfocada en respuesta rápida, autoridad local y claridad de servicio para convertir búsquedas urgentes en contactos directos.</p>
+              </div>
+              <a class="project-link" href="https://controldeplagasjw.com" target="_blank" rel="noopener noreferrer">Visitar <i data-lucide="arrow-up-right"></i></a>
+            </div>
+            <div class="project-preview">
+              <div class="preview-header"><span>Emergency-ready UX</span><span>Fast conversion</span></div>
+              <div class="preview-frame">
+                <span class="preview-pill">Servicio local</span>
+                <div class="preview-ui">
+                  <div class="preview-block">
+                    <div class="preview-line long"></div>
+                    <div class="preview-line medium"></div>
+                    <div class="preview-line short"></div>
+                    <div class="preview-stat-row">
+                      <div class="preview-stat"><div class="preview-line short"></div><div class="preview-line medium"></div></div>
+                      <div class="preview-stat"><div class="preview-line short"></div><div class="preview-line short"></div></div>
+                      <div class="preview-stat"><div class="preview-line short"></div><div class="preview-line medium"></div></div>
+                    </div>
+                  </div>
+                  <div class="preview-small">
+                    <div class="preview-barset"><span></span><span></span><span></span><span></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-meta">
+              <span class="meta-chip">Urgency-first copy</span>
+              <span class="meta-chip">Trust blocks</span>
+              <span class="meta-chip">Lead capture flow</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal-up" style="--accent:#4867d8;">
+            <div class="project-top">
+              <div class="project-title">
+                <span class="project-kicker">Exterior Remodeling</span>
+                <h3>Siding Solution</h3>
+                <p>Una narrativa premium para servicios residenciales que mezcla detalle técnico, prueba visual y una experiencia comercial elegante.</p>
+              </div>
+              <a class="project-link" href="https://sidingsolution.com" target="_blank" rel="noopener noreferrer">Visitar <i data-lucide="arrow-up-right"></i></a>
+            </div>
+            <div class="project-preview">
+              <div class="preview-header"><span>Premium presentation</span><span>High-ticket intent</span></div>
+              <div class="preview-frame">
+                <span class="preview-pill">Exterior systems</span>
+                <div class="preview-ui">
+                  <div class="preview-block">
+                    <div class="preview-line long"></div>
+                    <div class="preview-line long"></div>
+                    <div class="preview-line medium"></div>
+                  </div>
+                  <div class="preview-small">
+                    <svg width="100%" height="100%" viewBox="0 0 180 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <rect x="12" y="16" width="156" height="88" rx="18" fill="currentColor" opacity="0.06"/>
+                      <path d="M30 85L68 46L96 69L132 32L150 46" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-meta">
+              <span class="meta-chip">Premium visual language</span>
+              <span class="meta-chip">Service architecture</span>
+              <span class="meta-chip">Estimate funnel</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal-up" style="--accent:#0b8f82;">
+            <div class="project-top">
+              <div class="project-title">
+                <span class="project-kicker">Drainage & Gutters</span>
+                <h3>Gutter Solution</h3>
+                <p>Diseño funcional con foco en claridad técnica, rutas de contacto rápidas y una estructura preparada para campañas de generación de leads.</p>
+              </div>
+              <a class="project-link" href="https://guttersolution.us" target="_blank" rel="noopener noreferrer">Visitar <i data-lucide="arrow-up-right"></i></a>
+            </div>
+            <div class="project-preview">
+              <div class="preview-header"><span>Lead-oriented structure</span><span>Field-ready</span></div>
+              <div class="preview-frame">
+                <span class="preview-pill">Inspection funnel</span>
+                <div class="preview-block">
+                  <div class="preview-stat-row">
+                    <div class="preview-stat"><div class="preview-line short"></div><div class="preview-line medium"></div></div>
+                    <div class="preview-stat"><div class="preview-line short"></div><div class="preview-line short"></div></div>
+                    <div class="preview-stat"><div class="preview-line short"></div><div class="preview-line medium"></div></div>
+                  </div>
+                  <div class="preview-line long"></div>
+                  <div class="preview-line medium"></div>
+                  <div class="preview-line short"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-meta">
+              <span class="meta-chip">Fast scanning layout</span>
+              <span class="meta-chip">CTA density balance</span>
+              <span class="meta-chip">SEO-ready sections</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal-up" style="--accent:#739330;">
+            <div class="project-top">
+              <div class="project-title">
+                <span class="project-kicker">Protection Systems</span>
+                <h3>Gutter Leaf Solutions</h3>
+                <p>Una propuesta visual enfocada en beneficios, instalación profesional y argumentos claros para elevar la confianza antes de la llamada.</p>
+              </div>
+              <a class="project-link" href="https://gutterleafsolutions.com" target="_blank" rel="noopener noreferrer">Visitar <i data-lucide="arrow-up-right"></i></a>
+            </div>
+            <div class="project-preview">
+              <div class="preview-header"><span>Benefit-led UX</span><span>Retention focused</span></div>
+              <div class="preview-frame">
+                <span class="preview-pill">Protection layer</span>
+                <div class="preview-ui">
+                  <div class="preview-small">
+                    <div class="preview-barset"><span></span><span></span><span></span><span></span></div>
+                  </div>
+                  <div class="preview-block">
+                    <div class="preview-line medium"></div>
+                    <div class="preview-line long"></div>
+                    <div class="preview-line short"></div>
+                    <div class="chip-row">
+                      <span class="chip" style="background:color-mix(in srgb, var(--accent) 12%, var(--color-surface)); color:var(--accent);">Low maintenance</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-meta">
+              <span class="meta-chip">Product-led messaging</span>
+              <span class="meta-chip">Clean hierarchy</span>
+              <span class="meta-chip">Trust conversion</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal-up" style="--accent:#9d4edd;">
+            <div class="project-top">
+              <div class="project-title">
+                <span class="project-kicker">Business & Innovation</span>
+                <h3>Excelnova</h3>
+                <p>Una estética más tecnológica y consultiva, pensada para posicionar valor, visión y diferenciación en audiencias profesionales.</p>
+              </div>
+              <a class="project-link" href="https://excelnova.com" target="_blank" rel="noopener noreferrer">Visitar <i data-lucide="arrow-up-right"></i></a>
+            </div>
+            <div class="project-preview">
+              <div class="preview-header"><span>Consulting-grade design</span><span>Strategic positioning</span></div>
+              <div class="preview-frame">
+                <span class="preview-pill">Growth narrative</span>
+                <div class="preview-ui">
+                  <div class="preview-block">
+                    <div class="preview-line long"></div>
+                    <div class="preview-line medium"></div>
+                    <div class="preview-stat-row">
+                      <div class="preview-stat"><div class="preview-line short"></div><div class="preview-line medium"></div></div>
+                      <div class="preview-stat"><div class="preview-line short"></div><div class="preview-line short"></div></div>
+                      <div class="preview-stat"><div class="preview-line short"></div><div class="preview-line medium"></div></div>
+                    </div>
+                  </div>
+                  <div class="preview-small">
+                    <svg width="100%" height="100%" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <rect x="14" y="16" width="132" height="88" rx="20" fill="currentColor" opacity="0.05"/>
+                      <circle cx="48" cy="60" r="16" stroke="currentColor" stroke-width="8" opacity="0.55"/>
+                      <path d="M74 78L92 44L108 66L126 34" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-meta">
+              <span class="meta-chip">Strategic messaging</span>
+              <span class="meta-chip">Modern B2B feel</span>
+              <span class="meta-chip">Authority building</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="enfoque">
+      <div class="container">
+        <div class="section-head fade-in">
+          <h2>Lo que define el enfoque de Impulso Digital.</h2>
+          <p>Este portafolio combina estética editorial, interacción precisa y una estructura comercial pensada para transmitir profesionalismo sin ruido visual.</p>
+        </div>
+        <div class="difference reveal-up">
+          <article class="difference-card">
+            <i data-lucide="layout-template"></i>
+            <h3>Minimalismo con intención</h3>
+            <p>Espacios amplios, tipografía contundente y una composición limpia que deja que cada marca respire y se perciba premium.</p>
+          </article>
+          <article class="difference-card">
+            <i data-lucide="mouse-pointer-click"></i>
+            <h3>Interacción elegante</h3>
+            <p>Microanimaciones suaves, navegación clara y detalles dinámicos que elevan la percepción sin distraer del objetivo comercial.</p>
+          </article>
+          <article class="difference-card">
+            <i data-lucide="target"></i>
+            <h3>Diseño orientado a leads</h3>
+            <p>Cada bloque visual está pensado para reforzar confianza, destacar valor y facilitar el paso hacia el contacto o la cotización.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contacto">
+      <div class="container">
+        <div class="cta-panel reveal-up">
+          <div>
+            <span class="eyebrow">Portafolio listo para presentar</span>
+            <h2>Impulso Digital, diseñado para impresionar y convertir.</h2>
+            <p>Este concepto ya puede utilizarse como base de presentación comercial, landing de agencia o showcase de credibilidad para clientes potenciales.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="button primary" href="mailto:hola@impulsodigitalsv.com">hola@impulsodigitalsv.com</a>
+            <a class="button secondary" href="#inicio">Volver arriba</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <p>Impulso Digital SV · Portafolio web ultra moderno y minimalista.</p>
+      <p>Diseño interactivo con enfoque en autoridad, confianza y captación.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      let theme = prefersDark ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      function renderThemeIcon(mode) {
+        if (!toggle) return;
+        toggle.setAttribute('aria-label', mode === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+        toggle.innerHTML = mode === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+
+      renderThemeIcon(theme);
+      toggle?.addEventListener('click', function () {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        renderThemeIcon(theme);
+      });
+
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mobilePanel = document.getElementById('mobile-nav');
+      menuToggle?.addEventListener('click', function () {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+        mobilePanel?.classList.toggle('open', !expanded);
+        this.innerHTML = !expanded ? '<i data-lucide="x"></i>' : '<i data-lucide="menu"></i>';
+        if (window.lucide) lucide.createIcons();
+      });
+
+      document.querySelectorAll('.mobile-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobilePanel?.classList.remove('open');
+          menuToggle?.setAttribute('aria-expanded', 'false');
+          if (menuToggle) menuToggle.innerHTML = '<i data-lucide="menu"></i>';
+          if (window.lucide) lucide.createIcons();
+        });
+      });
+
+      if (window.Splitting) Splitting();
+      if (window.lucide) lucide.createIcons();
+    })();
+  </script>
 </body>
 </html>
